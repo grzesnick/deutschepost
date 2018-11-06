@@ -1,0 +1,18 @@
+<html>
+<div style="width:800px; margin: 40px auto;">
+      <img width="400px" src="https://images.automirrors.co.uk/ebay/deutschepost/logo.jpg" >
+      <h1>Please make sure you are uploading SalesHistory.csv downloaded from eBay</h1>
+      <form enctype="multipart/form-data" action="csvload.php" method="POST">
+          <input type="hidden" name="MAX_FILE_SIZE" value="99999999999999999">
+          <input name="uploadedfile" type="file"><br>
+          <input type="submit" value="Upload">
+      </form>
+
+    <h1>Please make sure you are uploading php.PHP downloaded from Deutsche Post</h1>
+    <form enctype="multipart/form-data" action="phpupload.php" method="POST">
+        <input type="hidden" name="MAX_FILE_SIZE" value="99999999999999999">
+        <input name="uploadedfile" type="file"><br>
+        <input type="submit" value="Upload">
+    </form>
+</div>
+</html>
