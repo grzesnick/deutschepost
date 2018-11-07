@@ -439,7 +439,7 @@ foreach ($csv as $column_ebay) {
 
 }
 
-$print = "NAME;ZUSATZ;STRASSE;NUMMER;PLZ;STADT;LAND;ADRESS_TYP;
+$print = "NAME;ZUSATZ;STRASSE;NUMMER;PLZ;STADT;LAND;ADRESS_TYP;SHAPE;QUANTITY;SORT
 Hightecpl; ;An der Pohlitzer Mühle;1;15890;Eisenhüttenstadt;DEU;HOUSE \r\n";
 
 $nowycsv = array(
@@ -454,8 +454,7 @@ $nowycsv = array(
     7 => 'HOUSE',
     8 => $Reference,
     9 => $Quantity,
-    10 => $key,
-    10 => $shape,
+    10 => $shape
 
 );
 $count_row = count($csv);
@@ -494,7 +493,6 @@ for ($i=0; $i < $count_row; $i++) {
         'HOUSE' . $p .
         $Reference[$i] . $p .
         $Quantity[$i] . $p .
-        $key[$i] . $p .
         $shape[$i]
         ];
 
