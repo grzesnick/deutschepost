@@ -28,6 +28,13 @@ function before ($this_char, $inthat)
     return substr($inthat, 0, strpos($inthat, $this_char));
 };
 
+function array_search_partial($arr, $keyword) {
+    foreach($arr as $index => $string) {
+        if (strpos($string, $keyword) !== FALSE)
+            return $index;
+    }
+}
+
 $parser = new \Smalot\PdfParser\Parser();
 $pdf = $parser->parseFile('upload/pdf.pdf');
 
@@ -43,7 +50,9 @@ foreach ($pages as $key => $page) {
 }
 
 // Get CSV
+
 $csv = array_map('str_getcsv', file('upload/filex.csv'));
+$csv = mb_convert_encoding ($csv, "ISO-8859-1");
 
 
 $count_row = count($csv);
@@ -58,16 +67,18 @@ while ($i<$count_row) {
 }
 
 // Search for values in CSV
-foreach ($data_ar as $data_value){
-    $data_value_a = before (" ", $data_value);
-    $data_value_b = after (" ", $data_value);
-    echo $data_value_a;
-}
-
 foreach ($csv_ar as $csv_value)     {
-    $csv_value_a = before (" ", $csv_value);
-    $csv_value_b = after (" ", $csv_value);
+    $csv_value_a = before (";", $csv_value);
+    $csv_value_b = after (";", $csv_value);
+    $key = array_search_partial($data_ar, $csv_value_a);
+    if ($key == NULL) {
+        $csv_value_a = substr($csv_value_a, 0,-1);
+        $key = array_search_partial($data_ar, $csv_value_a);
+    }
     echo $csv_value_a;
+    echo "<br>";
+    echo $key;
+    echo "<br>";
 }
 
 

@@ -526,6 +526,7 @@ $unsorted = ("upload/filex.csv");
 $csv = new parseCSV($unsorted); // create new parseCSV object.
 
 $csv->delimiter = ";";   // delimited
+$csv->encoding("ISO-8859-1"); //encoding
 $csv->parse($finalfile);  // parse
 
 $finalfile = ("upload/filex" . $r . ".csv");
